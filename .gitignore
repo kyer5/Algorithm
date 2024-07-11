@@ -1,0 +1,63 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store!/src/baekjoon/input_output/APlusB_2_2558.java
+
+!/src/baekjoon/input_output/APlusB_3_10950.java
+
+!/src/baekjoon/input_output/APlusB_4_10951.java
+
+!/src/baekjoon/input_output/APlusB_5_10952.java
+
+!/src/baekjoon/input_output/APlusB_6_10953.java
+
+!/src/baekjoon/input_output/APlusB_7_11021.java
+
+!/src/baekjoon/input_output/APlusB_8_11022.java
+
+!/src/baekjoon/input_output/APlusB_1000.java
+
+!/src/baekjoon/input_output/HelloWorld_2557.java
+
+!/src/baekjoon/input_output/N찍기_2741.java
+
+!/src/baekjoon/input_output/구구단_2739.java
+
+!/src/baekjoon/input_output/그대로출력하기2_11719.java
+
+!/src/baekjoon/input_output/그대로출력하기_11718.java
+
+!/src/baekjoon/input_output/기찍N_2742.java
+
+!/src/baekjoon/input_output/년2007_1924.java
+
+!/src/baekjoon/input_output/숫자의합_11720.java
+
+!/.gitignore
+
+!/Algorithm.iml
