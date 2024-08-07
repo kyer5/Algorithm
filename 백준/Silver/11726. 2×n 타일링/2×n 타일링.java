@@ -8,10 +8,7 @@ public class Main {
 
         Integer[] dp = new Integer[n + 1];
         dp[0] = 1;
-
-        if (n > 0) {
-            dp[1] = 1;
-        }
+        dp[1] = 1;
 
         for (int i = 2; i < n + 1; i++) {
             if (dp[i] == null) {
