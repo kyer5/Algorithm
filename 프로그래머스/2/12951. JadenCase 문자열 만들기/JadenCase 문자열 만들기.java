@@ -8,12 +8,12 @@ class Solution {
                 sb.append(" ");
             } else {
                 sb.append(arr[i].substring(0, 1).toUpperCase());
-                sb.append(arr[i].substring(1, arr[i].length()).toLowerCase());
+                sb.append(arr[i].substring(1).toLowerCase());
                 sb.append(" ");
             }
         }
 
-        if (s.substring(s.length() -1, s.length()).equals(" ")) {
+        if (s.charAt(s.length() - 1) == ' ') {
             return sb.toString();
         }
 
