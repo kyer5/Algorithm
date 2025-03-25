@@ -11,22 +11,18 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int S = Integer.parseInt(st.nextToken());
 
-        int[] locations = new int[N];
-        int[] sizes = new int[N];
+        int[] arr = new int[N];
 
         st = new StringTokenizer(br.readLine());
 
         for (int i = 0; i < N; i++) {
-            locations[i] = Integer.parseInt(st.nextToken());
+            int location = Integer.parseInt(st.nextToken());
+            arr[i] = Math.abs(S - location);
         }
 
-        for (int i = 0; i < N; i++) {
-            sizes[i] = Math.abs(S - locations[i]);
-        }
-
-        int gcd = sizes[0];
-        for (int i = 1; i < sizes.length; i++) {
-            gcd = gcd(gcd, sizes[i]);
+        int gcd = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            gcd = gcd(gcd, arr[i]);
         }
 
         sb.append(gcd);
