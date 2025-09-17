@@ -5,32 +5,51 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static final int MAX_N = 100;
 
-        int N = Integer.parseInt(br.readLine());
-        ArrayList<Integer> list = new ArrayList<>();
+    public static int n;
+    public static int[] numbers = new int[MAX_N];
 
-        for (int i = 0; i < N; i++) {
-            list.add(Integer.parseInt(br.readLine()));
-        }
+    public static int endOfArray;
 
-        int[][] removeArr = new int[2][2];
-        for (int i = 0; i < 2; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            removeArr[i][0] = Integer.parseInt(st.nextToken());
-            removeArr[i][1] = Integer.parseInt(st.nextToken());
-        }
+    public static void cutArray(int startIdx, int endIdx) {
+        int[] tempArr = new int[MAX_N];
+        int endOfTempArray = 0;
 
-        for (int i = 0; i < 2; i++) {
-            for (int j = removeArr[i][1] - 1; j >= removeArr[i][0] - 1; j--) {
-                list.remove(j);
+        for (int i = 0; i < endOfArray; i++) {
+            if (i < startIdx || i > endIdx) {
+                tempArr[endOfTempArray++] = numbers[i];
             }
         }
 
-        System.out.println(list.size());
-        for (Integer i : list) {
-            System.out.println(i);
+        for (int i = 0; i < endOfTempArray; i++) {
+            numbers[i] = tempArr[i];
+        }
+
+        endOfArray = endOfTempArray;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        n = Integer.parseInt(br.readLine());
+        for (int i = 0; i < n; i++) {
+            numbers[i] = Integer.parseInt(br.readLine());
+        }
+
+        endOfArray = n;
+
+        for (int i = 0; i < 2; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+            s--; e--;
+            cutArray(s, e);
+        }
+
+        System.out.println(endOfArray);
+        for (int i = 0; i < endOfArray; i++) {
+            System.out.println(numbers[i]);
         }
     }
 }
