@@ -1,30 +1,27 @@
 import java.util.*;
 
-class Solution
-{
-	public static void main(String args[]) throws Exception
-	{
-		Scanner sc = new Scanner(System.in);
-		int T = sc.nextInt();
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
 
-		for(int i = 1; i <= T; i++) {
-            String s = String.valueOf(i);
+        for (int i = 1; i <= T; i++) {
+
+            int x = i;
             int count = 0;
-            
-            for (char c : s.toCharArray()) {
-            	if (c == '3' || c == '6' || c == '9') {
-                	count++;
-                }
+
+            while (x > 0) {
+                int d = x % 10;
+                if (d == 3 || d == 6 || d == 9) count++;
+                x /= 10;
             }
-            
+
             if (count == 0) {
-            	System.out.print(i + " ");
+                System.out.print(i + " ");
             } else {
-            	for (int j = 0; j < count; j++) {
-                	System.out.print("-");
-                }
+                for (int k = 0; k < count; k++) System.out.print("-");
                 System.out.print(" ");
             }
-		}
-	}
+        }
+    }
 }
