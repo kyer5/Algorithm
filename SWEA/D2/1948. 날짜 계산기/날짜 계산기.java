@@ -6,7 +6,7 @@ class Solution
 	{
 		Scanner sc = new Scanner(System.in);
 		int T = sc.nextInt();
-        int[] days = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 		for(int i = 0; i < T; i++)
 		{
@@ -18,7 +18,7 @@ class Solution
             int month = m2 - m1;
             int result = 0;
             for (int j = 0; j < month; j++) {
-            	result += days[m1 + j];
+            	result += days[m1 - 1 + j];
             }
             result += d2 - d1 - 1;
             System.out.println("#" + (i + 1) + " " + (result + 2));
