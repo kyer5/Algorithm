@@ -6,47 +6,37 @@ class Solution {
 		int T = sc.nextInt();
 
 		for (int tc = 1; tc <= T; tc++) {
-			int n = sc.nextInt();
+            int n = sc.nextInt();
             int k = sc.nextInt();
             int[][] board = new int[n][n];
-            int result = 0;
             for (int i = 0; i < n; i++) {
             	for (int j = 0; j < n; j++) {
                 	board[i][j] = sc.nextInt();
                 }
             }
             
-            for (int i = 0; i < n; i++) {
-                int cnt = 0;
-            	for (int j = 0; j < n; j++) {
-                	if (board[i][j] == 1) {
-                    	cnt++;
-                    } else {
-                        if (cnt == k) {
-                        	result++;
-                        }
-                    	cnt = 0;
-                    }
+            int result = 0;
+        	for (int i = 0; i < n; i++) {
+            	StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                	sb.append(board[i][j]);                
                 }
-                if (cnt == k) {
-                	result++;
+                for (String seg : sb.toString().split("0")) {
+                	if (seg.length() == k) {
+                    	result++;
+                    }
                 }
             }
             for (int i = 0; i < n; i++) {
-                int cnt = 0;
-            	for (int j = 0; j < n; j++) {
-                	if (board[j][i] == 1) {
-                    	cnt++;
-                    } else {
-                    	if (cnt == k) {
-                        	result++;
-                    	}
-                		cnt = 0;
-                	}
+            	StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < n; j++) {
+                	sb.append(board[j][i]);                
                 }
-                if (cnt == k) {
-                	result++;
-                } 
+                for (String seg : sb.toString().split("0")) {
+                	if (seg.length() == k) {
+                    	result++;
+                    }
+                }
             }
             System.out.println("#" + tc + " " + result);
 		}
