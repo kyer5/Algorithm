@@ -18,16 +18,7 @@ public class Main {
         }
 
         // 3. 정렬
-        int tmp;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (numbers[i] > numbers[j]) {
-                    tmp = numbers[i];
-                    numbers[i] = numbers[j];
-                    numbers[j] = tmp;
-                }
-            }
-        }
+        Arrays.sort(numbers);
 
         // 4. 투 포인터 계산
         int cnt = 0;
