@@ -14,12 +14,10 @@ public class Main {
 
             boolean[] isNotPrimes = new boolean[2 * n + 1];
 
-            isNotPrimes[0] = true;
-            if (n == 1) {
-                isNotPrimes[1] = true;
-            }
-            if (n >= 2) {
-                for (int i = 2; i * i <= 2 * n; i++) {
+            isNotPrimes[0] = isNotPrimes[1] = true;
+
+            for (int i = 2; i * i <= 2 * n; i++) {
+                if (!isNotPrimes[i]) {
                     for (int j = i * i; j <= 2 * n; j += i) {
                         isNotPrimes[j] = true;
                     }
