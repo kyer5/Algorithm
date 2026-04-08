@@ -1,7 +1,7 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -12,26 +12,28 @@ public class Main {
                 break;
             }
 
-            boolean[] isPrime = new boolean[2 * n + 1];
+            boolean[] isNotPrimes = new boolean[2 * n + 1];
 
-            isPrime[0] = isPrime[1] = true;
-
-            for (int i = 2; i * i <= 2 * n; i++) {
-                if (!isPrime[i]) {
+            isNotPrimes[0] = true;
+            if (n == 1) {
+                isNotPrimes[1] = true;
+            }
+            if (n >= 2) {
+                for (int i = 2; i * i <= 2 * n; i++) {
                     for (int j = i * i; j <= 2 * n; j += i) {
-                        isPrime[j] = true;
+                        isNotPrimes[j] = true;
                     }
                 }
             }
 
-            int count = 0;
+            int cnt = 0;
             for (int i = n + 1; i <= 2 * n; i++) {
-                if (!isPrime[i]) {
-                    count++;
+                if (!isNotPrimes[i]) {
+                    cnt++;
                 }
             }
 
-            System.out.println(count);
+            System.out.println(cnt);
         }
     }
 }
