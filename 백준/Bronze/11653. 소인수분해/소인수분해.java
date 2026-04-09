@@ -4,22 +4,21 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        int num = Integer.parseInt(st.nextToken());
+        int num = Integer.parseInt(br.readLine());
 
-        if (num == 1) {
-            return;
-        } else {
-            int i = 2;
-            while (num != 1) {
-                if (num % i == 0) {
-                    num /= i;
-                    System.out.println(i);
-                } else {
-                    i++;
-                }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            while (num % i == 0) {
+                sb.append(i).append("\n");
+                num /= i;
             }
         }
+
+        if (num != 1) {
+            sb.append(num);
+        }
+
+        System.out.println(sb);
     }
 }
