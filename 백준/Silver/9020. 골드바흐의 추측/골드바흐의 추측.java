@@ -4,6 +4,8 @@ import java.util.*;
 public class Main{
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        
         int t = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < t; i++) {
@@ -18,18 +20,19 @@ public class Main{
                     }
                 }
             }
-            
+
             int a = 0;
             int b = 0;
-            
+
             for (int j = 2; j <= num / 2; j++) {
                 if (!isNotPrime[j] && !isNotPrime[num - j]) {
                     a = j;
                     b = num - j;
                 }
             }
-            
-            System.out.println(a + " " + b);
+
+            sb.append(a).append(" ").append(b).append("\n");
         }
+        System.out.println(sb);
     }
 }
