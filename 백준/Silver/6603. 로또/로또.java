@@ -1,54 +1,46 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
-    static int T;
     static int[] arr;
-    static int[] lotto;
-    static boolean[] visit;
-    static StringBuilder sb;
+    static int[] result;
+
+    public static void dfs(int start, int depth) {
+        if (depth == 6) {
+            for (int num : result) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+            return;
+        }
+
+        for (int i = start; i < arr.length; i++) {
+            result[depth] = arr[i];
+            dfs(i + 1, depth + 1);
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            sb = new StringBuilder();
 
-            T = Integer.parseInt(st.nextToken());
-            if (T == 0) {
+            int k = Integer.parseInt(st.nextToken());
+
+            if (k == 0) {
                 break;
             }
 
-            arr = new int[T];
-            for (int i = 0; i < T; i++) {
+            arr = new int[k];
+            result = new int[6];
+
+            for (int i = 0; i < k; i++) {
                 arr[i] = Integer.parseInt(st.nextToken());
             }
 
-            lotto = new int[6];
-            visit = new boolean[T];
-            backtracking(0, 0);
-
-            System.out.println(sb);
-        }
-    }
-
-    public static void backtracking(int index, int depth) {
-        if (depth == 6) {
-            for (int i : lotto) {
-                sb.append(i).append(" ");
-            }
-            sb.append("\n");
-            return;
-        }
-
-        for (int i = index; i < T; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                lotto[depth] = arr[i];
-                backtracking(i, depth + 1);
-                visit[i] = false;
-            }
+            dfs(0, 0);
+            System.out.println();
         }
     }
 }
