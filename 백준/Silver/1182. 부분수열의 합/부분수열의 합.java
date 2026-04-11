@@ -1,44 +1,44 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
-    static int N, S;
-    static int result = 0;
+    static int n, s;
     static int[] arr;
+    static int cnt = 0;
+
+    public static void dfs(int idx, int sum) {
+        if (idx == n) {
+            if (sum == s) {
+                cnt++;
+            }
+            return;
+        }
+
+        dfs(idx + 1, sum + arr[idx]);
+
+        dfs(idx + 1, sum);
+    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        StringBuilder sb = new StringBuilder();
 
-        N = Integer.parseInt(st.nextToken());
-        S = Integer.parseInt(st.nextToken());
-        arr = new int[N];
+        n = Integer.parseInt(st.nextToken());
+        s = Integer.parseInt(st.nextToken());
 
+        arr = new int[n];
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
+
+        for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
         dfs(0, 0);
 
-        if (S == 0) {
-            result--;
+        if (s == 0) {
+            cnt--;
         }
 
-        sb.append(result);
-        System.out.println(sb);
-    }
-
-    private static void dfs(int index, int sum) {
-        if (index == N) {
-            if (sum == S) {
-                result++;
-            }
-            return;
-        }
-
-        dfs(index + 1, sum + arr[index]);
-        dfs(index + 1, sum);
+        System.out.println(cnt);
     }
 }
