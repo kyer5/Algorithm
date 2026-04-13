@@ -1,9 +1,8 @@
 import java.io.*;
+import java.util.*;
 import java.math.BigInteger;
-import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -11,21 +10,15 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        BigInteger numerator = BigInteger.valueOf(n);
-        BigInteger denominator = BigInteger.valueOf(1);
+        m = Math.min(m, n - m);
 
-        for (int i = 1; i < n; i++) {
-            numerator = numerator.multiply(BigInteger.valueOf(i));
-        }
-
-        for (int i = 1; i <= n - m; i++) {
-            denominator = denominator.multiply(BigInteger.valueOf(i));
-        }
+        BigInteger result = BigInteger.ONE;
 
         for (int i = 1; i <= m; i++) {
-            denominator = denominator.multiply(BigInteger.valueOf(i));
+            result = result.multiply(BigInteger.valueOf(n - i + 1))
+                           .divide(BigInteger.valueOf(i));
         }
-        
-        System.out.println(numerator.divide(denominator));
+
+        System.out.println(result);
     }
 }
