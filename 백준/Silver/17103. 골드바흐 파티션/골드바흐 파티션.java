@@ -1,33 +1,38 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
+
+    static boolean[] isNotPrime = new boolean[1000001];
+
+    public static void prime() {
+        isNotPrime[0] = isNotPrime[1] = true;
+
+        for (int i = 2; i * i <= 1000000; i++) {
+            if (!isNotPrime[i])
+                for (int j = i * i; j <= 1000000; j += i) {
+                    isNotPrime[j] = true;
+                }
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        boolean[] isPrimes = new boolean[1000001];
-        isPrimes[0] = isPrimes[1] = true;
+        prime();
 
-        for (int i = 2; i <= Math.sqrt(1000000); i++) {
-            for (int j = i + i; j < isPrimes.length; j += i) {
-                if (!isPrimes[j]) {
-                    isPrimes[j] = true;
-                }
-            }
-        }
+        int t = Integer.parseInt(br.readLine());
+        for (int i = 0; i < t; i++) {
+            int num = Integer.parseInt(br.readLine());
+            int cnt = 0;
 
-        int T = Integer.parseInt(br.readLine());
-
-        for (int i = 0; i < T; i++) {
-            int count = 0;
-            int N = Integer.parseInt(br.readLine());
-            for (int j = 2; j <= N / 2; j++) {
-                if (!isPrimes[j] && !isPrimes[N - j]) {
-                    count++;
+            for (int j = 2; j <= num / 2; j++) {
+                if (!isNotPrime[j] && !isNotPrime[num - j]) {
+                    cnt++;
                 }
             }
 
-            System.out.println(count);
+            System.out.println(cnt);
         }
     }
 }
