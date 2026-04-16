@@ -1,34 +1,38 @@
 import java.io.*;
-import java.util.Stack;
+import java.util.*;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < T; i++) {
-            String str = br.readLine();
-            Stack<Character> stack = new Stack<>();
-            
-            for (int j = 0; j < str.length(); j++) {
-                if (str.charAt(j) == '(') {
-                    stack.push(str.charAt(j));
+        int t = Integer.parseInt(br.readLine());
+        for (int i = 0; i < t; i++) {
+            String input = br.readLine();
+
+            int cnt = 0;
+            boolean isValid = true;
+
+            for (int j = 0; j < input.length(); j++) {
+                if (input.charAt(j) == '(') {
+                    cnt++;
                 } else {
-                    if (stack.empty()) {
-                        stack.push(str.charAt(j));
-                        break;
-                    } else {
-                        stack.pop();
-                    }
+                    cnt--;
+                }
+
+                if (cnt < 0) {
+                    isValid = false;
+                    break;
                 }
             }
 
-            if (stack.empty()) {
-                System.out.println("YES");
+            if (cnt == 0 && isValid) {
+                sb.append("YES").append("\n");
             } else {
-                System.out.println("NO");
+                sb.append("NO").append("\n");
             }
         }
+
+        System.out.println(sb);
     }
 }
