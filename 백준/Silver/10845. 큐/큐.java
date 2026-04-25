@@ -1,58 +1,50 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Queue<Integer> queue = new LinkedList<>();
-        int last = 0;
-        int N = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N; i++) {
-            String cmd = br.readLine();
-            if (cmd.contains("push")){
-                String push = cmd.split(" ")[1];
-                queue.add(Integer.valueOf(push));
-                last = Integer.parseInt(push);
-            }
-            else if (cmd.equals("pop")) {
-                if (queue.size() == 0) {
-                    System.out.println("-1");
-                }
-                else {
-                    System.out.println(queue.peek());
-                    queue.remove();
-                }
-            }
-            else if (cmd.equals("size")) {
-                System.out.println(queue.size());
-            }
-            else if (cmd.equals("empty")) {
-                if (queue.size() == 0) {
-                    System.out.println("1");
-                }
-                else {
-                    System.out.println("0");
-                }            }
-            else if (cmd.equals("front")) {
-                if (queue.size() == 0) {
-                    System.out.println("-1");
-                }
-                else {
-                    System.out.println(queue.peek());
-                }
-            }
-            else if (cmd.equals("back")) {
-                if (queue.size() == 0) {
-                    System.out.println("-1");
-                }
-                else {
-                    System.out.println(last);
-                }
+        int n = Integer.parseInt(br.readLine());
+        LinkedList<Integer> queue = new LinkedList<>();
+
+        for (int i = 0; i < n; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String cmd = st.nextToken();
+
+            switch (cmd) {
+                case "push":
+                    int x = Integer.parseInt(st.nextToken());
+                    queue.offer(x);
+                    break;
+
+                case "pop":
+                    sb.append(queue.isEmpty() ? -1 : queue.poll()).append("\n");
+                    break;
+
+                case "size":
+                    sb.append(queue.size()).append("\n");
+                    break;
+
+                case "empty":
+                    sb.append(queue.isEmpty() ? 1 : 0).append("\n");
+                    break;
+
+                case "front":
+                    sb.append(queue.isEmpty() ? -1 : queue.peek()).append("\n");
+                    break;
+
+                case "back":
+                    if (queue.isEmpty()) {
+                        sb.append(-1).append("\n");
+                    } else {
+                        sb.append(queue.getLast()).append("\n");
+                    }
+                    break;
             }
         }
+
+        System.out.print(sb);
     }
 }
